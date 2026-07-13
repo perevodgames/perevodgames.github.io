@@ -3,7 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Perevod Games — Perevod Games</title>
+<title>Perevod Games — Voidborne Tactics</title>
+<meta name="description" content="Voidborne Tactics — a turn-based space tactics game for Android. Build your fleet, lead your admirals, and outwit your enemies across the void.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <style>
 :root { --bg:#0D141F; --panel:#141A24; --edge:#1E2A38; --steel:#4D80B3; --text:#BFCCD9;
         --bright:#E6E6F2; --muted:#99A6B3; --ember:#EE6C4D; }
@@ -11,37 +15,68 @@
 body { margin:0; background:#080D14; color:var(--text);
        font-family:-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
        font-size:16px; line-height:1.65; }
-.wrap { max-width:760px; margin:0 auto; padding:40px 22px 80px; }
-header.site { border-bottom:1px solid var(--edge); padding-bottom:18px; margin-bottom:34px; }
+.wrap { max-width:960px; margin:0 auto; padding:28px 22px 80px; }
+header.site { padding-bottom:16px; }
 header.site a.home { color:var(--muted); text-decoration:none; font-size:13px;
        letter-spacing:.14em; text-transform:uppercase; }
 header.site a.home:hover { color:var(--ember); }
-h1 { color:var(--bright); font-size:30px; line-height:1.25; margin:.4em 0 .3em; }
-h2 { color:var(--bright); font-size:20px; margin:1.8em 0 .5em; padding-top:.4em;
-     border-top:1px solid var(--edge); }
-strong { color:var(--bright); font-weight:600; }
+header.site a.home { display:inline-flex; align-items:center; gap:14px; }
+header.site img.mark { width:170px; height:auto; }
+h1 { color:var(--bright); font-size:32px; line-height:1.2; margin:.6em 0 .25em; }
+h2 { color:var(--bright); font-size:20px; margin:2em 0 .6em; }
 a { color:var(--steel); }
 a:hover { color:var(--ember); }
-ul { padding-left:1.3em; }
-li { margin:.45em 0; }
-p.updated { color:var(--muted); font-size:14px; }
+.hero { display:block; width:100%; height:auto; border:1px solid var(--edge);
+        border-radius:12px; }
+.tagline { font-size:18px; color:var(--text); max-width:640px; }
+.tagline strong { color:var(--bright); }
+/* Screenshot strip: CSS scroll-snap, no JS */
+.shots { display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory;
+         padding:6px 2px 14px; -webkit-overflow-scrolling:touch; }
+.shots img { flex:0 0 auto; width:min(78vw, 560px); height:auto;
+             scroll-snap-align:center; border:1px solid var(--edge); border-radius:10px; }
+.shots::-webkit-scrollbar { height:8px; }
+.shots::-webkit-scrollbar-thumb { background:var(--edge); border-radius:4px; }
+.swipe-hint { color:var(--muted); font-size:13px; letter-spacing:.08em;
+              text-transform:uppercase; margin-top:2px; }
+.links { display:flex; gap:22px; flex-wrap:wrap; padding:0; list-style:none; }
 footer { margin-top:56px; padding-top:18px; border-top:1px solid var(--edge);
          color:var(--muted); font-size:14px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-<header class="site"><a class="home" href="/">Perevod Games</a></header>
+<header class="site"><a class="home" href="/">
+<img class="mark" src="/images/studio_logo.webp" width="170" height="56" alt="">
+<span>Perevod Games</span></a></header>
 
-<h1>Perevod Games</h1>
-<p>Independent game studio. Maker of <strong>Voidborne Tactics</strong> — a turn-based
-space tactics game for Android: build your fleet, lead your admirals, and outwit your
-enemies across the void.</p>
-<h2>Voidborne Tactics</h2>
-<ul>
+<img class="hero" src="/images/hero.webp" width="1024" height="500"
+     alt="Voidborne Tactics — key art">
+
+<h1>Voidborne Tactics</h1>
+<p class="tagline">A turn-based space tactics game for Android. <strong>Build your
+fleet, lead your admirals, and outwit your enemies across the void.</strong></p>
+
+<h2>Screenshots</h2>
+<div class="shots">
+  <img src="/images/shot_1.webp" width="1280" height="800" alt="Voidborne Tactics screenshot" loading="lazy">
+  <img src="/images/shot_2.webp" width="1280" height="800" alt="Voidborne Tactics screenshot" loading="lazy">
+  <img src="/images/shot_3.webp" width="1280" height="800" alt="Voidborne Tactics screenshot" loading="lazy">
+  <img src="/images/shot_4.webp" width="1280" height="800" alt="Voidborne Tactics screenshot" loading="lazy">
+  <img src="/images/shot_5.webp" width="1280" height="800" alt="Voidborne Tactics screenshot" loading="lazy">
+  <img src="/images/shot_6.webp" width="1280" height="800" alt="Voidborne Tactics screenshot" loading="lazy">
+</div>
+<p class="swipe-hint">Swipe / scroll for more →</p>
+
+<!-- TODO(launch): official "Get it on Google Play" badge linking to the store
+     listing once the app is publicly available. -->
+
+<h2>Legal</h2>
+<ul class="links">
 <li><a href="/privacy.html">Privacy Policy</a></li>
 <li><a href="/terms.html">Terms of Service</a></li>
 </ul>
+
 <h2>Contact</h2>
 <p><a href="mailto:admin@perevodgames.com">admin@perevodgames.com</a></p>
 
