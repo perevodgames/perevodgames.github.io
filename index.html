@@ -34,9 +34,22 @@ a:hover { color:var(--ember); }
 .shots { display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory;
          padding:6px 2px 14px; -webkit-overflow-scrolling:touch; }
 .shots img { flex:0 0 auto; width:min(78vw, 560px); height:auto;
-             scroll-snap-align:center; border:1px solid var(--edge); border-radius:10px; }
+             scroll-snap-align:center; border:1px solid var(--edge); border-radius:10px;
+             cursor:zoom-in; }
 .shots::-webkit-scrollbar { height:8px; }
 .shots::-webkit-scrollbar-thumb { background:var(--edge); border-radius:4px; }
+/* Lightbox: native <dialog>, no libraries */
+dialog.lightbox { border:none; padding:0; background:transparent; max-width:none; max-height:none; }
+dialog.lightbox::backdrop { background:rgba(4, 7, 11, 0.88); backdrop-filter:blur(3px); }
+dialog.lightbox img { display:block; max-width:min(94vw, 1280px); max-height:88vh;
+                      width:auto; height:auto; border:1px solid var(--edge); border-radius:10px; }
+dialog.lightbox .lb-btn { position:fixed; background:rgba(20, 26, 36, 0.85); color:var(--bright);
+       border:1px solid var(--edge); border-radius:50%; width:48px; height:48px;
+       font-size:22px; line-height:1; cursor:pointer; user-select:none; }
+dialog.lightbox .lb-btn:hover { border-color:var(--ember); color:var(--ember); }
+dialog.lightbox .lb-close { top:16px; right:16px; }
+dialog.lightbox .lb-prev { left:12px; top:50%; transform:translateY(-50%); }
+dialog.lightbox .lb-next { right:12px; top:50%; transform:translateY(-50%); }
 .swipe-hint { color:var(--muted); font-size:13px; letter-spacing:.08em;
               text-transform:uppercase; margin-top:2px; }
 .links { display:flex; gap:22px; flex-wrap:wrap; padding:0; list-style:none; }
@@ -82,5 +95,51 @@ fleet, lead your admirals, and outwit your enemies across the void.</strong></p>
 
 <footer>Perevod Games · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · admin@perevodgames.com</footer>
 </div>
+
+<dialog class="lightbox" id="lightbox" aria-label="Screenshot viewer">
+  <img id="lb-img" src="" alt="Voidborne Tactics screenshot, enlarged">
+  <button class="lb-btn lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-btn lb-prev" id="lb-prev" aria-label="Previous screenshot">&#8249;</button>
+  <button class="lb-btn lb-next" id="lb-next" aria-label="Next screenshot">&#8250;</button>
+</dialog>
+
+<script>
+(function () {
+  var shots = Array.prototype.slice.call(document.querySelectorAll('.shots img'));
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lb-img');
+  var idx = 0;
+
+  function show(i) {
+    idx = (i + shots.length) % shots.length;
+    img.src = shots[idx].src;
+  }
+  shots.forEach(function (s, i) {
+    s.addEventListener('click', function () { show(i); box.showModal(); });
+  });
+  document.getElementById('lb-close').addEventListener('click', function () { box.close(); });
+  document.getElementById('lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
+  document.getElementById('lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
+  // click on the backdrop (outside the image) closes
+  box.addEventListener('click', function (e) {
+    if (e.target === box) box.close();
+  });
+  // arrow keys navigate while open (Esc closes natively)
+  box.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { show(idx - 1); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { show(idx + 1); e.preventDefault(); }
+  });
+  // basic swipe navigation on touch
+  var tx = null;
+  box.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', function (e) {
+    if (tx === null) return;
+    var dx = e.changedTouches[0].clientX - tx;
+    if (dx > 40) show(idx - 1);
+    else if (dx < -40) show(idx + 1);
+    tx = null;
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>
