@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Perevod Games — Voidborne Tactics</title>
-<meta name="description" content="Voidborne Tactics — a turn-based space tactics game for Android. Build your fleet, lead your admirals, and outwit your enemies across the void.">
+<meta name="description" content="Voidborne Tactics — a turn-based space tactics game for Android where every battle is a puzzle of positioning, timing, and nerve. Build your fleet, lead your admirals, outwit your enemies.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
@@ -28,16 +28,30 @@ a { color:var(--steel); }
 a:hover { color:var(--ember); }
 .hero { display:block; width:100%; height:auto; border:1px solid var(--edge);
         border-radius:12px; }
-.tagline { font-size:18px; color:var(--text); max-width:640px; }
+.tagline { font-size:18px; color:var(--text); max-width:720px; }
 .tagline strong { color:var(--bright); }
+/* Feature cards */
+.features { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin:26px 0 8px; }
+.features .card { background:var(--panel); border:1px solid var(--edge);
+                  border-radius:12px; padding:18px 20px; }
+.features .card h3 { color:var(--bright); font-size:17px; margin:0 0 .5em; line-height:1.35; }
+.features .card p { margin:0; font-size:15px; color:var(--text); }
+.features .card.wide { grid-column:1 / -1; }
+@media (max-width:720px) { .features { grid-template-columns:1fr; } }
 /* Screenshot strip: CSS scroll-snap, no JS */
 .shots { display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory;
          padding:6px 2px 14px; -webkit-overflow-scrolling:touch; }
-.shots img { flex:0 0 auto; width:min(78vw, 560px); height:auto;
+.shots img { flex:0 0 auto; height:min(48.75vw, 350px); width:auto;
              scroll-snap-align:center; border:1px solid var(--edge); border-radius:10px;
              cursor:zoom-in; }
 .shots::-webkit-scrollbar { height:8px; }
 .shots::-webkit-scrollbar-thumb { background:var(--edge); border-radius:4px; }
+/* "Coming soon" badge over future-content screenshots */
+.shots .soon { position:relative; flex:0 0 auto; scroll-snap-align:center; }
+.soon-badge { position:absolute; top:12px; left:12px; z-index:1; pointer-events:none;
+              background:rgba(8, 13, 20, 0.78); color:var(--ember);
+              border:1px solid var(--ember); border-radius:999px; padding:5px 14px;
+              font-size:12px; font-weight:600; letter-spacing:.14em; }
 /* Lightbox: native <dialog>, no libraries */
 dialog.lightbox { border:none; padding:0; background:transparent; max-width:none; max-height:none; }
 dialog.lightbox::backdrop { background:rgba(4, 7, 11, 0.88); backdrop-filter:blur(3px); }
@@ -88,8 +102,33 @@ body::after  { box-shadow: 98.2vw 67.4vh 0 1px rgba(235, 238, 250, 0.95), 77.2vw
      alt="Voidborne Tactics — key art">
 
 <h1>Voidborne Tactics</h1>
-<p class="tagline">A turn-based space tactics game for Android. <strong>Build your
-fleet, lead your admirals, and outwit your enemies across the void.</strong></p>
+<p class="tagline">A turn-based space tactics game for Android where every battle is a
+puzzle of positioning, timing, and nerve. <strong>Build your fleet ship by ship, lead it
+with admirals who grow alongside you, and outwit enemies who fight nothing like each
+other</strong> — from pirate swarms to dying empires guarding impossible technology.</p>
+
+<div class="features">
+  <div class="card">
+    <h3>Tactical combat with real decisions</h3>
+    <p>No auto-win lineups, no damage-sponge grind. Choose your engagement range, set your formation, issue repair orders, and play command cards at the moment they matter. A clever draw should feel like a lightning strike — and a bad one should still leave you a way to fight through.</p>
+  </div>
+  <div class="card">
+    <h3>Deep fleet building</h3>
+    <p>Dozens of hulls from nimble corvettes to dreadnoughts, each with weapon slots, armor, shields, and specialized systems. Mount oversized guns on small frames, field carriers with hangars full of strike craft, and level every part of your fleet. Your designs are yours — every loadout is a thesis about how a battle should go.</p>
+  </div>
+  <div class="card">
+    <h3>A story worth fighting through</h3>
+    <p>A multi-chapter campaign follows the Federation into a war that keeps getting stranger. Real characters, real losses, and an enemy whose story is bigger than it first appears. New chapters ship regularly — and the plot is the point, not a coat of paint.</p>
+  </div>
+  <div class="card wide">
+    <h3>Fight fleets built by real players</h3>
+    <p>Quick Battle matches you against fleet designs uploaded by other commanders — real loadouts, real tactics, rated fairly by fleet strength, so victories are earned, not bought. Between matches: weekly bosses with unique mechanics, daily missions, a deep achievement board, and local PVP to settle arguments with friends directly.</p>
+  </div>
+  <div class="card wide">
+    <h3>Five factions, five doctrines</h3>
+    <p>Disciplined Federation lines, Saurian boarding packs who answer superior technology with knives, opportunistic pirates, the haunted remnants of the Ancients — and something older, still counting.</p>
+  </div>
+</div>
 
 <h2>Screenshots</h2>
 <div class="shots">
@@ -99,6 +138,11 @@ fleet, lead your admirals, and outwit your enemies across the void.</strong></p>
   <img src="/images/shot_4.webp" width="1280" height="800" alt="Voidborne Tactics screenshot" loading="lazy">
   <img src="/images/shot_5.webp" width="1280" height="800" alt="Voidborne Tactics screenshot" loading="lazy">
   <img src="/images/shot_6.webp" width="1280" height="800" alt="Voidborne Tactics screenshot" loading="lazy">
+  <img src="/images/shot_7.webp" width="2142" height="1268" alt="Voidborne Tactics screenshot" loading="lazy">
+  <span class="soon">
+    <img src="/images/shot_8.webp" width="2154" height="1224" alt="Voidborne Tactics — preview of upcoming content" loading="lazy">
+    <span class="soon-badge">COMING SOON</span>
+  </span>
 </div>
 <p class="swipe-hint">Swipe / scroll for more →</p>
 
@@ -111,14 +155,18 @@ fleet, lead your admirals, and outwit your enemies across the void.</strong></p>
 <li><a href="/terms.html">Terms of Service</a></li>
 </ul>
 
+<h2>Community</h2>
+<p>Join the <a href="https://discord.gg/VHGPBvgP4e">Perevod Games Discord</a> — talk tactics, share fleet designs, and get news on upcoming chapters first.</p>
+
 <h2>Contact</h2>
 <p><a href="mailto:admin@perevodgames.com">admin@perevodgames.com</a></p>
 
-<footer>Perevod Games · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · admin@perevodgames.com</footer>
+<footer>© 2026 Perevod Games. All rights reserved. · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · <a href="https://discord.gg/VHGPBvgP4e">Discord</a> · admin@perevodgames.com</footer>
 </div>
 
 <dialog class="lightbox" id="lightbox" aria-label="Screenshot viewer">
   <img id="lb-img" src="" alt="Voidborne Tactics screenshot, enlarged">
+  <span class="soon-badge" id="lb-soon" style="position:fixed; top:24px; left:24px; display:none;">COMING SOON</span>
   <button class="lb-btn lb-close" id="lb-close" aria-label="Close">&times;</button>
   <button class="lb-btn lb-prev" id="lb-prev" aria-label="Previous screenshot">&#8249;</button>
   <button class="lb-btn lb-next" id="lb-next" aria-label="Next screenshot">&#8250;</button>
@@ -134,6 +182,8 @@ fleet, lead your admirals, and outwit your enemies across the void.</strong></p>
   function show(i) {
     idx = (i + shots.length) % shots.length;
     img.src = shots[idx].src;
+    document.getElementById('lb-soon').style.display =
+      shots[idx].closest('.soon') ? 'inline-block' : 'none';
   }
   shots.forEach(function (s, i) {
     s.addEventListener('click', function () { show(i); box.showModal(); });
