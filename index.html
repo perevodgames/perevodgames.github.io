@@ -34,6 +34,12 @@ a:hover { color:var(--ember); }
         border-radius:12px; }
 .tagline { font-size:18px; color:var(--text); max-width:720px; }
 .tagline strong { color:var(--bright); }
+/* Google Play call to action. Badge art carries its own clear space, so the
+   link box is flush against it — no extra padding. */
+.cta { margin:20px 0 0; }
+.cta a { display:inline-block; line-height:0; }
+.cta img { display:block; width:220px; height:auto; }
+.cta a:hover img { opacity:.85; }
 /* Feature cards */
 .features { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin:26px 0 8px; }
 .features .card { background:var(--panel); border:1px solid var(--edge);
@@ -115,6 +121,9 @@ puzzle of positioning, timing, and nerve. <strong>Build your fleet ship by ship,
 with admirals who grow alongside you, and outwit enemies who fight nothing like each
 other</strong> — from pirate swarms to dying empires guarding impossible technology.</p>
 
+<p class="cta"><a href="https://play.google.com/store/apps/details?id=com.perevodgames.voidbornetactics&amp;hl=en_US">
+<img src="/images/google-play-badge.png" width="220" height="85" alt="Get it on Google Play"></a></p>
+
 <div class="features">
   <div class="card">
     <h3>Tactical combat with real decisions</h3>
@@ -154,9 +163,6 @@ other</strong> — from pirate swarms to dying empires guarding impossible techn
 </div>
 <p class="swipe-hint">Swipe / scroll for more →</p>
 
-<!-- TODO(launch): official "Get it on Google Play" badge linking to the store
-     listing once the app is publicly available. -->
-
 <h2>Legal</h2>
 <ul class="links">
 <li><a href="/privacy.html">Privacy Policy</a></li>
@@ -169,7 +175,7 @@ other</strong> — from pirate swarms to dying empires guarding impossible techn
 <h2>Contact</h2>
 <p><a href="mailto:admin@perevodgames.com">admin@perevodgames.com</a></p>
 
-<footer>© 2026 Perevod Games. All rights reserved. · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · <a href="https://discord.gg/VHGPBvgP4e">Discord</a> · admin@perevodgames.com</footer>
+<footer>© 2026 Perevod Games. All rights reserved. · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a> · <a href="https://discord.gg/VHGPBvgP4e">Discord</a> · <a href="https://play.google.com/store/apps/details?id=com.perevodgames.voidbornetactics&amp;hl=en_US">Google Play</a> · admin@perevodgames.com</footer>
 </div>
 
 <dialog class="lightbox" id="lightbox" aria-label="Screenshot viewer">
